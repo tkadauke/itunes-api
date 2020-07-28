@@ -18,7 +18,11 @@ var logFormat = "'[:date[iso]] - :remote-addr - :method :url :status :response-t
 app.use(morgan(logFormat))
 
 function getCurrentState(){
-  itunes = Application('iTunes');
+  try {
+    itunes = Application('Music');
+  } catch (error) {
+    itunes = Application('iTunes');
+  }
   playerState = itunes.playerState();
   currentState = {};
 
@@ -63,7 +67,11 @@ function sendResponse(error, res){
 }
 
 function playPlaylist(nameOrId){
-  itunes = Application('iTunes');
+  try {
+    itunes = Application('Music');
+  } catch (error) {
+    itunes = Application('iTunes');
+  }
 
   if ((nameOrId - 0) == nameOrId && ('' + nameOrId).trim().length > 0) {
     id = parseInt(nameOrId);
@@ -76,7 +84,11 @@ function playPlaylist(nameOrId){
 }
 
 function setVolume(level){
-  itunes = Application('iTunes');
+  try {
+    itunes = Application('Music');
+  } catch (error) {
+    itunes = Application('iTunes');
+  }
 
   if (level) {
     itunes.soundVolume = parseInt(level);
@@ -87,7 +99,11 @@ function setVolume(level){
 }
 
 function setMuted(muted){
-  itunes = Application('iTunes');
+  try {
+    itunes = Application('Music');
+  } catch (error) {
+    itunes = Application('iTunes');
+  }
 
   if (muted) {
     itunes.mute = muted;
@@ -98,7 +114,11 @@ function setMuted(muted){
 }
 
 function setShuffle(mode){
-  itunes = Application('iTunes');
+  try {
+    itunes = Application('Music');
+  } catch (error) {
+    itunes = Application('iTunes');
+  }
 
   if (!mode) {
     mode = "songs"
@@ -115,7 +135,11 @@ function setShuffle(mode){
 }
 
 function setRepeat(mode){
-  itunes = Application('iTunes');
+  try {
+    itunes = Application('Music');
+  } catch (error) {
+    itunes = Application('iTunes');
+  }
 
   if (!mode) {
     mode = "all"
@@ -131,7 +155,11 @@ function setRepeat(mode){
 }
 
 function getPlaylistsFromItunes(){
-  itunes = Application('iTunes');
+  try {
+    itunes = Application('Music');
+  } catch (error) {
+    itunes = Application('iTunes');
+  }
   playlists = itunes.playlists();
 
   playlistNames = [];
