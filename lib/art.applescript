@@ -18,7 +18,6 @@ on write_to_file(this_data, target_file, append_data)
 end write_to_file
 
 tell application "Music"
-	tell application "iTunes"
     try
       set aTrack to the current track
       set aArtwork to data of artwork 1 of aTrack
@@ -26,5 +25,4 @@ tell application "Music"
     on error
       log "error getting info"
     end try
-  end tell
 end tell
